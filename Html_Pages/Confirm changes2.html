@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm changes2</title>
+
+  <style>
+    /* === Base Styles === */
+    * { box-sizing: border-box; }
+    body {
+      text-align: center;
+      margin: 0;
+      font-family: Inter, system-ui, Arial, sans-serif;
+      color: #1f2937;
+      background: radial-gradient(1200px 600px at 80% -10%, #fff 0%, #fff6bf 40%, #fffbeb 65%);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1100px; margin: auto; padding: 18px 22px; }
+
+    /* === Header === */
+    header {
+      background: linear-gradient(90deg, #EBE389, #fae588);
+      border-bottom: 1px solid rgba(0,0,0,.05);
+      box-shadow: 0 6px 20px rgba(245,158,11,.15);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand img {
+      height: 55px;
+      background: #fff;
+      padding: 1px;
+      border-radius: 12px;
+      border: 1px solid #f1e9b6;
+      box-shadow: 0 4px 10px rgba(245,158,11,.12);
+    }
+    .brand strong {
+      font-weight: 900;
+      color: #111;
+      font-size: clamp(18px, 2.4vw, 20px);
+    }
+    .links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .links a {
+      padding: 8px 12px;
+      border-radius: 12px;
+      color: #111;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: .2s;
+    }
+    .links a:hover {
+      background: rgba(255,255,255,.7);
+      border-color: #fef3c7;
+    }
+    .links a[aria-current="page"] {
+      background: #fff;
+      border-color: #fde68a;
+      box-shadow: 0 4px 10px rgba(0,0,0,.05);
+    }
+
+    /* === Booking Box === */
+    .booking-container {
+      max-width: 600px;
+      background: #fff;
+      margin: 60px auto;
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    /* === Back Button === */
+    .back-btn {
+      display: inline-block;
+      float: left;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      background-color: #F9DA57;
+      color: #333;
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(249,218,87,0.4);
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    .back-btn:hover {
+      background-color: #FFD700;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(249,218,87,0.6);
+    }
+
+    /* === Header Row === */
+    .header-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 25px;
+    }
+
+    /* === Form Styles === */
+    h1 { color: #4B0082; }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    /* === Preview Box === */
+    .preview-box {
+      margin-top: 20px;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      padding: 15px;
+      background-color: #fafafa;
+    }
+    .preview-content {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-align: left;
+    }
+    .preview-content img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .preview-text p {
+      margin: 6px 0;
+      font-size: 16px;
+    }
+
+    /* === Buttons === */
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+    .confirm {
+      background-color: #F9DA57;
+    }
+    .confirm:hover {
+      background-color: #FFD700;
+    }
+    .cancel {
+      background-color: #eee;
+    }
+    .cancel:hover {
+      background-color: #ddd;
+    }
+
+    /* === Success Message === */
+    .success-message {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+      display: none;
+    }
+
+    /* === Footer === */
+    footer {
+      background:#f6eaa6;
+      border-top:1px solid #f1e9b6;
+      margin-top:50px;
+    }
+    .footer-inner {
+      max-width:1100px;
+      margin:auto;
+      padding:18px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    .socials {
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .socials a {
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background: linear-gradient(180deg,#fff8d6,#fffbe6);
+      border:1px solid #f1e9b6;
+      box-shadow:0 6px 14px rgba(245,158,11,.12);
+      transition:transform .15s ease, box-shadow .15s ease, background .2s ease;
+    }
+    .socials a:hover {
+      transform:translateY(-2px);
+      box-shadow:0 10px 20px rgba(245,158,11,.18);
+      background:#fff;
+    }
+    .socials img {
+      width:22px;
+      height:22px;
+      object-fit:contain;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="home.html">
+        <img src="images/logo1.png" alt="BIRWAZ logo">
+        <strong>BIRWAZ</strong>
+      </a>
+      <nav class="links">
+        <a href="homeUser.html">Home</a>
+        <a href="index.html">Designs</a>
+        <a href="viewReservations.html">View Reservations</a>
+        <a href="home.html">Log Out</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- === Booking Section === -->
+  <main>
+    <div class="booking-container">
+
+      <!-- Top Row -->
+      <div class="header-row">
+        <a href="Edit2.html" class="back-btn">Back</a>
+        <h1>Confirm Changes</h1>
+      </div>
+
+      <!-- Preview -->
+      <div class="preview-box" id="preview">
+        <div class="preview-content">
+          <img src="images/stu6.jpg" alt="Studio Preview">
+          <div class="preview-text">
+            <p><strong>Background:</strong> Black</p>
+            <p><strong>Lighting:</strong> Warm Yellow</p>
+            <p><strong>Decorations:</strong> Sheer Fabric</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form id="bookingForm">
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="time">Select Time:</label>
+        <select id="time" required>
+          <option value="">-- Select Time Slot --</option>
+          <option>10:00 AM - 11:00 AM</option>
+          <option>12:00 PM - 1:00 PM</option>
+          <option>3:00 PM - 4:00 PM</option>
+          <option disabled>5:00 PM - 6:00 PM (Unavailable)</option>
+        </select>
+
+        <label for="price">Price:</label>
+        <input type="text" id="price" value="250 SAR" readonly>
+
+        <div class="buttons">
+          
+          <button type="submit" class="confirm">Confirm Changes</button>
+        </div>
+
+        <div class="success-message" id="successMessage">
+          ✅ Your Changes in the Studio is confirmed! You’ll receive an email reminder 24h before your appointment.
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="copy">© 2025 BIRWAZ. All rights reserved.</div>
+      <div class="socials">
+        <a href="https://twitter.com" target="_blank"><img src="images/twitter.png" alt="Twitter"></a>
+        <a href="https://instagram.com" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+        <a href="https://wa.me" target="_blank"><img src="images/whatsapp.png" alt="WhatsApp"></a>
+        <a href="mailto:birwaz@gmail.com" target="_blank"><img src="images/email.png" alt="Email"></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- === Script === -->
+  <script>
+    const form = document.getElementById('bookingForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      successMessage.style.display = 'block';
+      setTimeout(() => {
+        window.location.href = "viewResesrvations.html";
+      }, 2500);
+    });
+
+    
+  </script>
+
+</body>
+</html>
