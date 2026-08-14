@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/birwaz-creative-animated-header.gif" alt="BIRWAZ" width="100%">
+  <img src="birwaz-creative-animated-header.gif" alt="BIRWAZ" width="100%">
 </p>
 
 # BIRWAZ
