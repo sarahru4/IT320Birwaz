@@ -285,35 +285,6 @@ Examples include:
 
 ---
 
-## Academic Context
-
-**King Saud University**  
-College of Computer and Information Sciences  
-Department of Information Technology  
-**IT 320 — Course Project**
-
----
-
-## Documentation
-
-The repository includes the full project documentation covering:
-
-- Problem and proposed solution
-- Product vision and objectives
-- Domain analysis
-- Requirements engineering
-- System users and use cases
-- Product backlog
-- System architecture
-- Class diagram
-- Data design
-- Component design
-- Interface design
-- Implementation
-- Testing and project evaluation
-
----
-
 ## Future Direction
 
 BIRWAZ can be expanded with additional customization options, richer visualization, broader studio support, enhanced notifications, and additional services that make the journey from design inspiration to confirmed reservation even more seamless.
