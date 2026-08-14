@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="birwaz-header.png" alt="BIRWAZ Project Header" width="100%">
+  <img src="assets/birwaz-creative-animated-header.gif" alt="BIRWAZ" width="100%">
 </p>
 
 # BIRWAZ
